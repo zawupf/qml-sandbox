@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
     QQmlApplicationEngine engine;
     Util util;
+    util.init(engine);
 
     engine.rootContext()->setContextProperty("util", &util);
     engine.load("main.qml");

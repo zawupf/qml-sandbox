@@ -22,7 +22,7 @@ QtObject {
     }
 
     function test_ArrayBuffer() {
-        var buffer = new ArrayBuffer(8);
+        var buffer = util.newArrayBuffer(8);
         console.log('byteLength:', buffer.byteLength);
 
         var v = new Int32Array(buffer);
