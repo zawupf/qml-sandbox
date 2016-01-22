@@ -15,6 +15,8 @@ signals:
 public slots:
     void readBuffer(QVariant value) const;
     void writeBuffer(QVariant value) const;
+
+    void quit(void) const;
 };
 
 #endif // UTIL_H
