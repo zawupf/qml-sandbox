@@ -39,5 +39,16 @@ void Util::quit() const
 
 QJSValue Util::newArrayBuffer(int length)
 {
-    return _newArrayBufferFunc.call(QJSValueList() << length);
+    QJSValue value = _newArrayBufferFunc.call(QJSValueList() << length);
+
+    // init buffer
+    QVariant v = value.toVariant();
+    const QByteArray buffer = v.toByteArray();
+    char* b = const_cast<char*>(buffer.data()); // <- EVEL!!!
+    for (int i = 0; i != length; ++i) {
+        b[i] = i % 256;
+    }
+    qDebug() << "Util.newArrayBuffer:" << v;
+
+    return value;
 }

@@ -27,8 +27,6 @@ QtObject {
 
         var v = new Int32Array(buffer);
         var v2 = new Int16Array(buffer);
-        v[0] = 1;
-        v[1] = 2;
 
         var dump = function (prefix) {
             var msg = 'views: i32[%1, %2] === i16[%3, %4, %5, %6]';
@@ -44,6 +42,9 @@ QtObject {
                         .arg(v2[3]));
         };
 
+        dump("init");
+        v[0] = 1;
+        v[1] = 2;
         dump("before");
         util.readBuffer(buffer);
         util.writeBuffer(buffer);
