@@ -8,6 +8,7 @@ QtObject {
         console.info('Started');
 
         call('test_ArrayBuffer');
+        call('test_Float32Array')
 
         util.quit();
         console.info('Finished');
@@ -15,7 +16,7 @@ QtObject {
 
     function call(fn, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
         var f = sandbox[fn] || function () {};
-        console.info('Calling', fn);
+        console.info('\n\nCalling', fn);
         console.time(fn);
         f(a1, a2, a3, a4, a5, a6, a7, a8, a9);
         console.timeEnd(fn);
@@ -48,6 +49,28 @@ QtObject {
         dump("before");
         util.readBuffer(buffer);
         util.writeBuffer(buffer);
+        dump("after ")
+    }
+
+    function test_Float32Array() {
+        var v = new Float32Array(2);
+
+        var dump = function (prefix) {
+            var msg = 'f32: [%1, %2]';
+            if (prefix) {
+                msg = prefix + ' ' + msg;
+            }
+            console.log(msg
+                        .arg(v[0])
+                        .arg(v[1]));
+        };
+
+        dump("init");
+        v[0] = 1.1;
+        v[1] = 2.2;
+        dump("before");
+        util.readBuffer(v.buffer);
+        util.writeBuffer(v.buffer);
         dump("after ")
     }
 }
