@@ -3,6 +3,11 @@
 Fun with QML - just a simple project for testing fancy QML/C++ ideas.
 
 
+## Minimum Requirements
+
+- Qt 5.5
+
+
 ## How to build
 
 Open project in QtCreator and build.
